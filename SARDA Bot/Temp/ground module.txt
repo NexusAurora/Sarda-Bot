@@ -1,0 +1,73 @@
+#include <SPI.h>
+#include <nRF24L01.h>
+#include <RF24.h>
+
+RF24 radio(9, 8); // CE, CSN
+
+const byte address[6] = "00001";
+const byte address2[6] = "00002";
+int a = 5;
+
+void setup() {
+  Serial.begin(9600);
+  radio.begin();
+  radio.openWritingPipe(address);
+  radio.openReadingPipe(0,address2);
+  radio.setPALevel(RF24_PA_HIGH);
+  radio.stopListening();
+}
+
+void loop() {
+
+   radio.write(&a, sizeof(a));
+   Serial.println(receiveCheck());
+  
+  /*if(radio.write(&a, sizeof(a))==1)
+  {
+    Serial.println(1);
+    radio.startListening();
+    while(!radio.available()) 
+    {
+    radio.read(&a, sizeof(a));
+    Serial.println(a);
+  
+    a=a+1;
+    radio.stopListening();
+    }
+  }
+  else
+  {
+    Serial.println(0);
+  }*/
+  delay(1000);
+}
+
+void sendCheck()
+{
+    radio.stopListening();
+    char check = '1';
+    radio.write(&check, sizeof(check));
+    radio.startListening();
+}
+
+int receiveCheck()
+{
+    radio.startListening();
+    char check = ' '; 
+    if (radio.available()) 
+    {
+        radio.read(&check, sizeof(check));
+        Serial.println(check);
+    }
+    radio.stopListening();
+
+    if(check=='1')
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
+    
+}

@@ -1,0 +1,4 @@
+Time needed for functions to operate:
+
+gettemperature() - Time: 100; 
+getdegree() - Time: 0;

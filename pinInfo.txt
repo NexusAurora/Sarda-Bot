@@ -1,0 +1,45 @@
+Car:
+
+D2	-leftMotor2
+D3	-motorSpeedpin
+D4	-leftMotor1
+D5  -TemperatureSensor
+D6	-CE
+D7	-rightMotor1
+D8	-rightMotor2
+D9	-CSN
+D10 
+D11	-MOSI
+D12	-MISO
+D13	-SCK
+A0  -Servo
+A1  -Ultrasonic Sensor front
+A2  -Ultrasonic Sensor back
+A3
+A4	-SCA
+A5	-SDL
+A6
+A7
+
+GroundModule:
+
+D2 
+D3 -Buzzer	
+D4 
+D5 -Yellow Light 
+D6 -Green Light
+D7  -CE
+D8  -CSN	
+D9	
+D10 
+D11	-MOSI
+D12	-MISO
+D13	-SCK
+A0 -VRX
+A1 -VRY
+A2 -Mode	
+A3
+A4	
+A5	
+A6
+A7
